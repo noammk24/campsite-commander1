@@ -1,47 +1,57 @@
-package com.example.campsite_commander
+package com.example.campsitecommander
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.campsite_commander.ui.theme.CampsitecommanderTheme
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var txtTotal: TextView
+    private lateinit var btnAdd: Button
+    private lateinit var btnView: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            CampsitecommanderTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+
+        setContentView(R.layout.activity_main)
+
+        txtTotal = findViewById(R.id.txtTotal)
+        btnAdd = findViewById(R.id.btnAddGear)
+        btnView = findViewById(R.id.btnViewChecklist)
+
+        calculateTotal()
+
+        btnAdd.setOnClickListener {
+
+            startActivity(
+                Intent(this, AddGearActivity::class.java)
+            )
+        }
+
+        btnView.setOnClickListener {
+
+            startActivity(
+                Intent(this, DetailedViewActivity::class.java)
+            )
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    override fun onResume() {
+        super.onResume()
+        calculateTotal()
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CampsitecommanderTheme {
-        Greeting("Android")
+    private fun calculateTotal() {
+
+        var total = 0
+
+        for (i in GearData.quantities.indices) {
+            total += GearData.quantities[i]
+        }
+
+        txtTotal.text =
+            "Total Items Packed: $total"
     }
 }
