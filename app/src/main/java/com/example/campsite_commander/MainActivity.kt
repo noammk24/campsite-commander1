@@ -1,4 +1,6 @@
-package com.example.campsitecommander
+//ST10517736 MULENGA NOAM KABEKE
+
+package com.example.campsite_commander
 
 import android.content.Intent
 import android.os.Bundle
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         calculateTotal()
     }
+    //calculate total items packed
 
     private fun calculateTotal() {
 
