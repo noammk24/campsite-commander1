@@ -15,9 +15,9 @@ object GearData {
     )
 
     val quantities = arrayListOf(
-        1,
-        3,
-        2
+        12,
+        35,
+        28
     )
 
     val comments = arrayListOf(
