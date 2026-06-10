@@ -1,27 +1,25 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="#081C15">
+    android:background="#081C15"
+    android:gravity="center">
 
     <TextView
-        android:id="@+id/txtTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:textColor="#FFFFFF"/>
+        android:text="@string/app_name"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnAddGear"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Gear"/>
-
-    <Button
-        android:id="@+id/btnViewChecklist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Checklist"/>
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:text="@string/loading_adventure"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+</RelativeLayout>

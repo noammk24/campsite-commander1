@@ -2,7 +2,6 @@ package com.example.campsite_commander
 
 
 object GearData {
-
     val itemNames = arrayListOf(
         "Tent",
         "Marshmallows",

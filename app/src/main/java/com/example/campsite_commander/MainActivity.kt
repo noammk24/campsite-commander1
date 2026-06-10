@@ -26,14 +26,12 @@ class MainActivity : AppCompatActivity() {
         calculateTotal()
 
         btnAdd.setOnClickListener {
-
             startActivity(
                 Intent(this, AddGearActivity::class.java)
             )
         }
 
         btnView.setOnClickListener {
-
             startActivity(
                 Intent(this, DetailedViewActivity::class.java)
             )
@@ -44,17 +42,12 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         calculateTotal()
     }
-    //calculate total items packed
 
     private fun calculateTotal() {
-
         var total = 0
-
         for (i in GearData.quantities.indices) {
             total += GearData.quantities[i]
         }
-
-        txtTotal.text =
-            "Total Items Packed: $total"
+        txtTotal.text = getString(R.string.total_items_packed, total)
     }
 }

@@ -9,29 +9,21 @@ class DetailedViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_detailed_view)
 
-        setContentView(
-            R.layout.activity_detailed_view
-        )
+        val txtDetails = findViewById<TextView>(R.id.txtDetails)
+        val btnBack = findViewById<Button>(R.id.btnBack)
 
-        val txtDetails =
-            findViewById<TextView>(R.id.txtDetails)
-
-        val btnBack =
-            findViewById<Button>(R.id.btnBack)
-
-        var output = ""
+        val output = StringBuilder()
 
         for (i in GearData.itemNames.indices) {
-
-            output +=
-                "Item: ${GearData.itemNames[i]}\n" +
-                        "Category: ${GearData.categories[i]}\n" +
-                        "Quantity: ${GearData.quantities[i]}\n" +
-                        "Comment: ${GearData.comments[i]}\n\n"
+            output.append(getString(R.string.detail_item, GearData.itemNames[i])).append("\n")
+                .append(getString(R.string.detail_category, GearData.categories[i])).append("\n")
+                .append(getString(R.string.detail_quantity, GearData.quantities[i])).append("\n")
+                .append(getString(R.string.detail_comment, GearData.comments[i])).append("\n\n")
         }
 
-        txtDetails.text = output
+        txtDetails.text = output.toString()
 
         btnBack.setOnClickListener {
             finish()

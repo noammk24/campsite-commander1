@@ -1,6 +1,5 @@
 package com.example.campsite_commander
 
-
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -11,57 +10,37 @@ class AddGearActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_add_gear)
 
         val edtItem = findViewById<EditText>(R.id.edtItem)
         val edtCategory = findViewById<EditText>(R.id.edtCategory)
         val edtQuantity = findViewById<EditText>(R.id.edtQuantity)
         val edtComment = findViewById<EditText>(R.id.edtComment)
-
-        val btnSave =
-            findViewById<Button>(R.id.btnSave)
+        val btnSave = findViewById<Button>(R.id.btnSave)
 
         btnSave.setOnClickListener {
+            val itemName = edtItem.text.toString()
+            val category = edtCategory.text.toString()
+            val quantityStr = edtQuantity.text.toString()
+            val comment = edtComment.text.toString()
 
-            if (
-                edtItem.text.isEmpty() ||
-                edtCategory.text.isEmpty() ||
-                edtQuantity.text.isEmpty() ||
-                edtComment.text.isEmpty()
-            ) {
-
-                Toast.makeText(
-                    this,
-                    "Fill in all fields",
-                    Toast.LENGTH_SHORT
-                ).show()
-
+            if (itemName.isEmpty() || category.isEmpty() || quantityStr.isEmpty() || comment.isEmpty()) {
+                Toast.makeText(this, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            GearData.itemNames.add(
-                edtItem.text.toString()
-            )
+            val quantity = quantityStr.toIntOrNull()
+            if (quantity == null) {
+                Toast.makeText(this, getString(R.string.invalid_quantity), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-            GearData.categories.add(
-                edtCategory.text.toString()
-            )
+            GearData.itemNames.add(itemName)
+            GearData.categories.add(category)
+            GearData.quantities.add(quantity)
+            GearData.comments.add(comment)
 
-            GearData.quantities.add(
-                edtQuantity.text.toString().toInt()
-            )
-
-            GearData.comments.add(
-                edtComment.text.toString()
-            )
-
-            Toast.makeText(
-                this,
-                "Gear Added",
-                Toast.LENGTH_SHORT
-            ).show()
-
+            Toast.makeText(this, getString(R.string.gear_added), Toast.LENGTH_SHORT).show()
             finish()
         }
     }

@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">campsite-commander</string>
+    <string name="app_name">Campsite Commander</string>
+    <string name="total_items_packed">Total Items Packed: %1$d</string>
+    <string name="add_gear">Add Gear</string>
+    <string name="view_checklist">View Checklist</string>
+    <string name="item_name">Item Name</string>
+    <string name="category">Category</string>
+    <string name="quantity">Quantity</string>
+    <string name="comment">Comment</string>
+    <string name="save_gear">Save Gear</string>
+    <string name="back_to_base">Back To Base</string>
+    <string name="fill_fields">Please fill in all fields</string>
+    <string name="gear_added">Gear Added</string>
+    <string name="invalid_quantity">Please enter a valid number for quantity</string>
+    <string name="loading_adventure">Loading Adventure…</string>
+    <string name="detail_item">Item: %1$s</string>
+    <string name="detail_category">Category: %1$s</string>
+    <string name="detail_quantity">Quantity: %1$d</string>
+    <string name="detail_comment">Comment: %1$s</string>
 </resources>
